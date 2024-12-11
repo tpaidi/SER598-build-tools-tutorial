@@ -2,7 +2,6 @@
     "compilerOptions": {
       "target": "ESNext",                 // Use modern JavaScript features
       "module": "ESNext",                 // Use ES Module system
-      "declaration": true,                // Generate type declaration files
       "strict": true,                     // Enable all strict type checking options
       "esModuleInterop": true,            // Interop with CommonJS modules
       "skipLibCheck": true,               // Skip type checks of declaration files
