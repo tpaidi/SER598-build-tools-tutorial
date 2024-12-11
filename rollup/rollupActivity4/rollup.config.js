@@ -11,7 +11,6 @@ import typescript from '@rollup/plugin-typescript';
 import path from 'path';
 import fs from 'fs';
 
-// Common plugins (excluding TypeScript)
 const commonPlugins = [
   resolve(),
   commonjs(),
@@ -21,74 +20,70 @@ const commonPlugins = [
 export default [
   // **Browser Build**
   {
-    input: './src/index.ts', // Single entry point for browser
+    input: './src/index.ts',
     output: {
-      file: 'dist/bundle.js',      // Output to dist/
+      file: 'dist/bundle.js',      
       format: 'iife',               // IIFE format for browsers
       sourcemap: true,
-      inlineDynamicImports: true,   // Prevents code-splitting for IIFE
+      inlineDynamicImports: true,   // Prevents code-splitting for IIFE. This is important since rollup causes problems otherwise
     },
     plugins: [
       html({
         fileName: 'index.html',
         template: () => fs.readFileSync(path.resolve(__dirname, 'src/index.html'), 'utf8'),
       }),
-      css({ output: 'bundle.css' }), // Outputs to dist/bundle.css
+      css({ output: 'bundle.css' }),
       ...commonPlugins,
-      // TypeScript plugin with declarations disabled for browser build
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: false, // Disable declaration files for browser build
+        declaration: false,
       }),
-      terser(), // Minify the bundle
+      terser(),
       visualizer({
         filename: 'dist/bundle-stats.html',
-        open: true, // Automatically open the visualization in the browser
+        open: true,
       }),
     ],
   },
   
   // **CommonJS (CJS) Build**
   {
-    input: ['./src/index.ts', './src/another.ts'], // Multiple entry points for CJS
-    external: ['lodash'],                           // External dependencies
+    input: ['./src/index.ts', './src/another.ts'], 
+    external: ['lodash'],                          
     output: {
-      dir: 'dist/cjs',              // Output directory for CJS
-      format: 'cjs',                // CommonJS format
+      dir: 'dist/cjs',              
+      format: 'cjs',                
       sourcemap: true,
-      preserveModules: true,        // Enables code-splitting
+      preserveModules: true,        
     },
     plugins: [
       ...commonPlugins,
-      // TypeScript plugin with declarations enabled for CJS build
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: true,                      // Enable declaration files
-        declarationDir: './dist/cjs/types',     // Output directory for type declarations
+        declaration: true,                      
+        declarationDir: './dist/cjs/types',     
       }),
-      terser(), // Minify the bundle
+      terser(),
     ],
   },
   
   // **ES Module (ESM) Build**
   {
-    input: ['./src/index.ts', './src/another.ts'], // Multiple entry points for ESM
-    external: ['lodash'],                           // External dependencies
+    input: ['./src/index.ts', './src/another.ts'], 
+    external: ['lodash'],                           
     output: {
-      dir: 'dist/esm',              // Output directory for ESM
-      format: 'esm',                // ES Module format
+      dir: 'dist/esm',              
+      format: 'esm',                
       sourcemap: true,
-      // No 'preserveModules' needed here unless desired
     },
     plugins: [
       ...commonPlugins,
-      // TypeScript plugin with declarations enabled for ESM build
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: true,                      // Enable declaration files
-        declarationDir: './dist/esm/types',     // Output directory for type declarations
+        declaration: true,                      
+        declarationDir: './dist/esm/types',     
       }),
-      terser(), // Minify the bundle
+      terser(), 
     ],
   },
 ];
