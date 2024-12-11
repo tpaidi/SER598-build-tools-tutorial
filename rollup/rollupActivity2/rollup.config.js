@@ -1,6 +1,11 @@
 import html from '@rollup/plugin-html';
 import css from 'rollup-plugin-css-only';
+
 import terser from '@rollup/plugin-terser';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import { visualizer } from 'rollup-plugin-visualizer';
+import analyze from 'rollup-plugin-analyzer';
 
 import path from 'path';
 import fs from 'fs';
@@ -21,6 +26,21 @@ export default {
       },
     }),
     css({ output: 'bundle.css' }),
+    // minify the bundle
     terser(),
+    // For resolving node_modules packages
+    resolve(), 
+    // For converting CommonJS modules to ES6
+    commonjs(), 
+    // For visualizing the bundle
+    visualizer({
+      filename: 'dist/bundle-stats.html',
+      open: true,
+    }),
+    // For analyzing the bundle
+    analyze({
+      summaryOnly: true,
+    }),
+    
   ],
 };

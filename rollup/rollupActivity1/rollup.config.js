@@ -2,9 +2,6 @@ import html from '@rollup/plugin-html';
 import css from 'rollup-plugin-css-only';
 import terser from '@rollup/plugin-terser';
 
-import { visualizer } from 'rollup-plugin-visualizer';
-import analyze from 'rollup-plugin-analyzer';
-
 import path from 'path';
 import fs from 'fs';
 
@@ -24,13 +21,5 @@ export default {
       },
     }),
     css({ output: 'bundle.css' }),
-    terser(),
-    visualizer({
-      filename: 'dist/bundle-stats.html',
-      open: true,
-    }),
-    analyze({
-      summaryOnly: true,
-    }),
   ],
 };
