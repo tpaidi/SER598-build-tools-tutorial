@@ -1,4 +1,5 @@
 import '../styles/planet.css';
+import '../styles/main.css';
 import earth from '../images/earth.jpg';
 import mars from '../images/mars.jpg';
 import jupiter from '../images/jupiter.jpg';
