@@ -25,11 +25,11 @@ Learn the fundamentals of Webpack, its core concepts, and how to set up a projec
 Dive into Rollup, a modern JavaScript module bundler focused on ES modules and libraries.
 
 #### Activities:
-- **[Activity 1 Without Rollup: ](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/activityNonRollup)**
+- **[Activity 1 Without Rollup: Basic Rollup Setup](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/activityNonRollup)**
 - **[Activity 1 With Rollup: ](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/rollupActivity1)**
-- **[Activity 2: ](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/rollupActivity2)**
-- **[Activity 3: ](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/rollupActivity3)**
-- **[Activity 4: ](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/rollupActivity4)**
+- **[Activity 2: Advanced Features with Rollup](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/rollupActivity2)**
+- **[Activity 3: Code Splitting and Modular Bundling](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/rollupActivity3)**
+- **[Activity 4: TypeScript Integration](https://github.com/tpaidi/SER598-build-tools-tutorial/tree/main/rollup/rollupActivity4)**
 
 ---
 
