@@ -1,5 +1,5 @@
-## SER 598- Build tools tutorial
-# Build Tools Tutorial: Webpack and Rollup
+## SER 598- Build tools demo
+# Build Tools Demo: Webpack and Rollup
 
 Welcome to the **Build Tools Demo**! This demo explores the features, and usage of two popular build tools: **Webpack** and **Rollup**. You will gain practical experience by completing activities designed to reinforce your understanding.
 
