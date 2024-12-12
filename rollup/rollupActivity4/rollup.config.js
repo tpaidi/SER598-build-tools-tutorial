@@ -57,6 +57,7 @@ export default [
       preserveModules: true,        
     },
     plugins: [
+      css({ output: 'cjs.css' }),
       ...commonPlugins,
       typescript({
         tsconfig: './tsconfig.json',
@@ -77,6 +78,7 @@ export default [
       sourcemap: true,
     },
     plugins: [
+      css({ output: 'esm.css' }),
       ...commonPlugins,
       typescript({
         tsconfig: './tsconfig.json',

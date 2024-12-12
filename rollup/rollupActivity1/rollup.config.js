@@ -1,6 +1,5 @@
 import html from '@rollup/plugin-html';
 import css from 'rollup-plugin-css-only';
-import terser from '@rollup/plugin-terser';
 
 import path from 'path';
 import fs from 'fs';
