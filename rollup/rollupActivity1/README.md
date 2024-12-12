@@ -127,28 +127,6 @@ export default {
    - `npm run serve` to start a local server and view your application in the browser.
 
 ---
-
-## Why Rollup Helps ##
-1. Dependency Resolution:  
-   Rollup supports ES6 module syntax and automatically resolves imports and exports, ensuring that dependencies are included in the correct order.
-
-2. Tree Shaking:  
-   Rollup eliminates unused code, resulting in smaller and more efficient bundles. This is particularly beneficial for large projects and libraries.
-
-3. Plugin Ecosystem:  
-   A rich ecosystem of plugins enables handling various tasks—such as bundling CSS, generating HTML, and minifying code—without manual intervention.
-
-4. Code Optimization:  
-   Rollup produces highly optimized bundles by default. Combined with tree shaking and minification plugins, this leads to faster load times.
-
-5. Modular Code Structure:  
-   Encourages writing modular, maintainable code. Developers can break down the codebase into logical modules, improving scalability.
-
-6. Format Flexibility:  
-   Rollup can output multiple formats (ES modules, CommonJS, etc.) to ensure compatibility with different browsers and environments.
-
----
-
 ## Conclusion ##
 
 Without Rollup:

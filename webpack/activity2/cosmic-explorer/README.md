@@ -27,4 +27,6 @@ The project structure consists of various folders that separate concerns such as
    ```
 3. Open `index.html`
 
+Explore the website and get a feel for it and all it's functionalities.
+
 Right now this is very inefficient, in the next activity we will use Webpack to imporve it

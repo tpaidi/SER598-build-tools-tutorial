@@ -1,124 +1,122 @@
-## Activity 1: With Rollup ##
+## **Activity 1: With Webpack**
 
-### Folder Structure ###
+Now follow along and lets implement some basic functionalities of Webpack together!
+
+
+### **Folder Structure**
 ```
-activity1rollup/
+activity1webpack/
 ├── src/
 │   ├── index.js
 │   ├── math.js
-│   ├── index.html
+├── index.html
 ├── package.json
-├── rollup.config.js
+├── webpack.config.js
 ├── dist/
-│   ├── bundle.js
-│   ├── bundle.css
-│   ├── index.html
+│   ├── (generated bundle.js)
 ```
 
-### Code ###
+### **Code**
 
-**src/math.js**
+Update all the files code as below: 
+
+#### `src/math.js`
 ```javascript
 export function add(a, b) {
     return a + b;
 }
-
-export function multiply(a, b) {
-    return a * b;
-}
 ```
 
-**src/index.js**
+#### `src/index.js`
 ```javascript
-import { add, multiply } from './math.js';
-
-console.log("Sum:", add(2, 3));
-console.log("Product:", multiply(2, 3));
+import { add } from './math.js';
+console.log(add(3, 5));
 ```
 
-**src/index.html**
+#### `index.html`
 ```html
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollup Project</title>
-  <link rel="stylesheet" href="bundle.css">
-</head>
-<body>
-  <h1>Hello, Rollup!</h1>
-  <script src="bundle.js"></script>
-</body>
+<html>
+	<body>
+		<script src="dist/bundle.js"></script>
+	</body>
 </html>
 ```
 
----
+### **What Is `webpack.config.js`?**
 
-## What Is rollup.config.js? ##
-The `rollup.config.js` file is the configuration file for Rollup. It defines how Rollup processes and bundles files.
+Create a `webpack.config.js` in the root directory with the following code.
+The `webpack.config.js` file is the configuration file for Webpack. It defines how Webpack processes and bundles your files.
 
-**rollup.config.js**
+#### **Code**
 ```javascript
-import html from '@rollup/plugin-html';
-import css from 'rollup-plugin-css-only';
-import path from 'path';
-import fs from 'fs';
+const path = require('path');
 
-export default {
-  input: './src/index.js',
-  output: {
-    file: 'dist/bundle.js',
-    format: 'esm',
-    sourcemap: true,
-  },
-  plugins: [
-    html({
-      fileName: 'index.html',
-      template: () => {
-        const htmlPath = path.resolve(__dirname, 'src/index.html');
-        return fs.readFileSync(htmlPath, 'utf8');
-      },
-    }),
-    css({ output: 'bundle.css' }),
-  ],
+module.exports = {
+    entry: './src/index.js', 
+    output: {
+        filename: 'bundle.js', 
+        path: path.resolve(__dirname, 'dist'), 
+    },
+    mode: 'development', 
 };
+
 ```
 
-**Important Parts of rollup.config.js**
-- **input**: Specifies the entry point of the application (`src/index.js`).
-- **output**: Defines the output file (`dist/bundle.js`), the format (ES modules), and enables source maps for debugging.
-- **plugins**:  
-  - `@rollup/plugin-html`: Generates the HTML file for the project.  
-  - `rollup-plugin-css-only`: Extracts CSS into `bundle.css`.
+### **Important Parts of `webpack.config.js`**
+1. **`entry`**:
+   - Specifies the entry point of the application (`src/index.js`).
+
+2. **`output`**:
+   - Defines the output file (`dist/bundle.js`) and directory (`dist/`).
+
+3. **`mode`**:
+   - Defines the build mode (`development` or `production`).
 
 ---
 
-## Steps to Set Up Rollup ##
+### **Steps to Set Up Webpack**
 
-1. Initialize the Project (if needed):  
-   `npm init -y`
-
-2. Install Rollup and Plugins:  
+1. **Initialize the Project**:
+   Run the following command to create a `package.json` file:
    ```bash
-   npm install --save-dev rollup rollup-plugin-html rollup-plugin-css-only
-   npm install --save-dev http-server
-   npm install --save-dev @rollup/plugin-html
-   npm install --save-dev rollup-plugin-css-only
+   npm init -y
    ```
 
-3. Create or Copy Required Files:  
-   Create `index.js`, `index.html`, and `style.css` in the `src/` folder. For the purpose of this tutorial, we have pre-built files in the GitHub repository.
+2. **Install Webpack**:
+   Install Webpack and Webpack CLI as development dependencies:
+   ```bash
+   npm install webpack webpack-cli --save-dev
+   ```
 
-4. Add Scripts to package.json:  
-   For example:  
+3. **Add Build Script**:
+   Update `package.json` to include a build script:
    ```json
    "scripts": {
-       "build": "rollup -c",
-       "serve": "http-server dist"
+       "build": "webpack"
    }
    ```
 
-5. Run Rollup:  
-   - `npm run build` to generate the `dist` folder with `bundle.js`, `bundle.css`, and `index.html`.
-   - `npm run serve` to start a local server and view your application in the browser.
+4. **Run Webpack**:
+   Generate the bundle file by running:
+   ```bash
+   npm run build
+   ```
+
+   This command creates the `dist/bundle.js` file.
+
+5. **Open in Browser**:
+   Open `index.html` in your browser. Ensure that it loads `dist/bundle.js`, we can also see that the `console.log()` works undependant on import order
+
+---
+
+## **Conclusion**
+1. **Without Webpack**:
+   - Developers must manage script loading manually.
+   - Incorrect import orders cause runtime errors.
+   - Multiple HTTP requests increase load times.
+
+2. **With Webpack**:
+   - Dependencies are resolved automatically.
+   - Script order doesn’t matter.
+   - The project is more scalable, maintainable, and optimized.

@@ -42,7 +42,6 @@ console.log("Product:", multiply(2, 3));
         <!-- Load scripts manually in the incorrect order -->
         <script src="index.js"></script>
         <script src="math.js"></script>
-        <!-- The above throws an error -->
     </head>
     <body>
         <h1>Without Rollup</h1>
@@ -61,7 +60,6 @@ Open `index.html` in the browser and in the console we can see the error log
         <!-- Load scripts manually in the correct order -->
         <script src="math.js"></script>
         <script src="index.js"></script>
-        <!-- The above throws an error -->
     </head>
     <body>
         <h1>Without Rollup</h1>
@@ -77,6 +75,3 @@ Open `index.html` in the browser and in the console we can see the success with 
 
 - Global Namespace Pollution:  
   All functions are attached to the global `window` object, increasing the risk of name conflicts as the application grows.
-
-- Performance Issues:  
-  Each `<script>` tag results in a separate HTTP request, slowing down page load times.

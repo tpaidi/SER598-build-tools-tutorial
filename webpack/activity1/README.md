@@ -1,9 +1,6 @@
+## **Activity 1: Without Webpack**
 
-## Activity 1: Without Rollup ##
-
-### For this activity ###
-
-### Folder Structure ###
+### **Folder Structure**
 ```
 activity1/
 ├── index.html
@@ -11,72 +8,50 @@ activity1/
 ├── math.js
 ```
 
-### Code ###
+### **Code**
 
-**math.js**
+#### `math.js`
 ```javascript
 function add(a, b) {
     return a + b;
 }
 
-function multiply(a, b) {
-    return a * b;
-}
-
-// Attach functions to the global window object
 window.add = add;
-window.multiply = multiply;
 ```
 
-**index.js**
+#### `index.js`
 ```javascript
-console.log("Sum:", add(2, 3));    // Access global add function
-console.log("Product:", multiply(2, 3)); // Access global multiply function
+console.log(add(3, 5));
 ```
 
-**index.html**
+#### `index.html`
 ```html
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Without Rollup</title>
-        <!-- Load scripts manually in the incorrect order -->
-        <script src="index.js"></script>
-        <script src="math.js"></script>
-        <!-- The above throws an error -->
-    </head>
-    <body>
-        <h1>Without Rollup</h1>
-    </body>
+<body>
+	<!-- Correct order of import -->
+	<script src="math.js"></script>
+	<script src="index.js"></script>
+
+
+	<!-- Incorrect order of import, will not work -->
+	<!-- <script src="index.js"></script> -->
+	<!-- <script src="math.js"></script> -->
+
+</body>
 </html>
 ```
 
-**Correct Alternative**
+Let's now open up the `index.html` file on our browser to start the application and see if the `console.log()` works.
 
-**index.html**
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Without Rollup</title>
-        <!-- Load scripts manually in the correct order -->
-        <script src="math.js"></script>
-        <script src="index.js"></script>
-        <!-- The above throws an error -->
-    </head>
-    <body>
-        <h1>Without Rollup</h1>
-    </body>
-</html>
-```
+We can notice that it fails we uncomment the incorrect order of import above and passes if we do vice versa.
 
-**Why It Fails**
-- Manual Dependency Management:  
-  If the `<script>` tags in index.html are not in the correct order (for example, loading `index.js` before `math.js`), the browser will throw an error like:  
-  `Uncaught ReferenceError: add is not defined`
+### **Why It Fails**
+   - If the `<script>` tags in `index.html` are not in the correct order (e.g., `index.js` before `math.js`), the browser will throw an error:
+     ```
+     Uncaught ReferenceError: add is not defined
+     ```
 
-- Global Namespace Pollution:  
-  All functions are attached to the global `window` object, increasing the risk of name conflicts as the application grows.
+   - All functions are attached to the global `window` object, increasing the risk of name conflicts as the application grows.
 
-- Performance Issues:  
-  Each `<script>` tag results in a separate HTTP request, slowing down page load times.
+---
