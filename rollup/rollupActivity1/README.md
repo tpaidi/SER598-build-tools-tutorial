@@ -132,7 +132,6 @@ export default {
 Without Rollup:
 - Developers must manually manage script and CSS loading.
 - Incorrect import orders lead to runtime errors.
-- Multiple HTTP requests slow down page load times.
 
 With Rollup:
 - Dependencies are resolved automatically.
