@@ -114,7 +114,6 @@ module.exports = {
 1. **Without Webpack**:
    - Developers must manage script loading manually.
    - Incorrect import orders cause runtime errors.
-   - Multiple HTTP requests increase load times.
 
 2. **With Webpack**:
    - Dependencies are resolved automatically.
